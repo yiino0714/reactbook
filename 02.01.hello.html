@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello React</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="app">
+        </div>
+        <script src="react/build/react.js"></script>
+        <script src="react/build/react-dom.js"></script>
+        <script>
+            var Component = React.createClass({
+                propTypes: {
+                    firstName: React.PropTypes.string.isRequired,
+                    middleName: React.PropTypes.string,
+                    familyName: React.PropTypes.string.isRequired,
+                    address: React.PropTypes.string,
+                },
+
+                getDefaultProps: function() {
+                    return {
+                        middleName: '',
+                        address: 'Nothing',
+                    };
+                },
+                render: function() {
+                    return React.DOM.span(null, "I am " + 
+                        this.props.firstName + " " + 
+                        this.props.middleName + " " + 
+                        this.props.familyName + " " +
+                        this.props.address);
+                }
+            });
+            ReactDOM.render(
+                React.createElement(Component, {
+                    firstName: "Bob",
+                    familyName: "Lenon"
+                    
+                }),
+                document.getElementById("app")
+            );
+        </script>
+    </body>
+</html>
